@@ -16,6 +16,9 @@ jobs:
           cache: pip
       - run: pip install -r requirements-dev.txt
       - run: python -m pytest -q
+      - name: Relevance gate
+        # Ranking changes must move the numbers up, or they do not ship.
+        run: python -m evals.run_eval --check
 
   container:
     runs-on: ubuntu-latest

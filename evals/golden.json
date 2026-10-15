@@ -1,0 +1,37 @@
+{
+  "description": "Hand-graded relevance judgements, split by how the question is worded. The plain-language tier is the one that matters: compliance officers do not type like regulators.",
+  "tiers": {
+    "regulatory_language": [
+      {"q": "how long must batch records be retained", "relevant": ["eu-gmp-chapter-4"]},
+      {"q": "who reviews audit trails before batch release", "relevant": ["fda-data-integrity-2018", "us-cfr-211-192"]},
+      {"q": "investigating an unexplained batch discrepancy", "relevant": ["us-cfr-211-192"]},
+      {"q": "electronic signature requirements", "relevant": ["us-cfr-part-11"]},
+      {"q": "ALCOA data integrity principles", "relevant": ["who-trs-996-annex-5"]},
+      {"q": "computerised system validation in the EU", "relevant": ["eu-gmp-annex-11"]},
+      {"q": "managing subjectivity in risk assessment", "relevant": ["ich-q9-r1"]},
+      {"q": "CAPA and change management system", "relevant": ["ich-q10"]},
+      {"q": "preventing falsified medicines entering the supply chain", "relevant": ["eu-gdp-2013-c343"]},
+      {"q": "design history file for a class II device", "relevant": ["us-cfr-820-30"]},
+      {"q": "decentralised clinical trials and data governance", "relevant": ["ich-e6-r3"]},
+      {"q": "deviation from written production procedures", "relevant": ["us-cfr-211-100"]},
+      {"q": "temperature control during transport", "relevant": ["eu-gdp-2013-c343"]},
+      {"q": "system administrator rights segregation of duties", "relevant": ["fda-data-integrity-2018"]},
+      {"q": "qualified person batch certification", "relevant": ["eu-gmp-chapter-4"]},
+      {"q": "software validation and risk analysis for devices", "relevant": ["us-cfr-820-30"]}
+    ],
+    "plain_language": [
+      {"q": "can I delete a failing test result and rerun it", "relevant": ["fda-data-integrity-2018"]},
+      {"q": "how many years do we keep the paperwork", "relevant": ["eu-gmp-chapter-4"]},
+      {"q": "someone changed a number without saying why", "relevant": ["us-cfr-part-11", "fda-data-integrity-2018"]},
+      {"q": "our supplier might be shipping counterfeit drugs", "relevant": ["eu-gdp-2013-c343"]},
+      {"q": "what do we do when a batch fails spec", "relevant": ["us-cfr-211-192"]},
+      {"q": "is a scanned signature acceptable", "relevant": ["us-cfr-part-11"]},
+      {"q": "the fridge went out of range overnight", "relevant": ["eu-gdp-2013-c343"]},
+      {"q": "who is allowed to change a method", "relevant": ["fda-data-integrity-2018"]},
+      {"q": "do we have to tell anyone about a fake medicine", "relevant": ["eu-gdp-2013-c343"]},
+      {"q": "the computer system was never properly checked", "relevant": ["eu-gmp-annex-11"]},
+      {"q": "staff felt pressured to sign off results", "relevant": ["who-trs-996-annex-5"]},
+      {"q": "we skipped a step in the SOP", "relevant": ["us-cfr-211-100"]}
+    ]
+  }
+}

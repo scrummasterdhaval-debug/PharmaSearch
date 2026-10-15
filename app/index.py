@@ -13,6 +13,7 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 
 from .corpus import Document
+from .synonyms import expand
 
 # BM25 free parameters: k1 controls term-frequency saturation, b the length
 # normalisation. These are the standard defaults and are good enough until we
@@ -65,16 +66,16 @@ class SearchIndex:
         # in more than half the corpus, which a small corpus hits easily.
         return math.log(1 + (n - df + 0.5) / (df + 0.5))
 
-    def _score(self, doc_id: str, query_terms: list[str]) -> float:
+    def _score(self, doc_id: str, weighted_terms: dict[str, float]) -> float:
         frequencies = self._term_frequencies[doc_id]
         length = len(self._tokens[doc_id])
         score = 0.0
-        for term in query_terms:
+        for term, weight in weighted_terms.items():
             tf = frequencies.get(term, 0)
             if not tf:
                 continue
             denominator = tf + K1 * (1 - B + B * length / self._average_length)
-            score += self._idf(term) * (tf * (K1 + 1)) / denominator
+            score += weight * self._idf(term) * (tf * (K1 + 1)) / denominator
         return score
 
     def search(
@@ -88,8 +89,11 @@ class SearchIndex:
         if not query_terms:
             return []
 
+        # Bridge colloquial phrasing to regulatory vocabulary before matching.
+        weighted_terms = expand(query_terms)
+
         candidates: set[str] = set()
-        for term in query_terms:
+        for term in weighted_terms:
             candidates |= self._postings.get(term, frozenset())
 
         hits = []
@@ -97,7 +101,7 @@ class SearchIndex:
             doc = self._documents[doc_id]
             if jurisdiction and doc.jurisdiction.lower() != jurisdiction.lower():
                 continue
-            score = self._score(doc_id, query_terms)
+            score = self._score(doc_id, weighted_terms)
             if score <= 0:
                 continue
             hits.append(SearchHit(document=doc, score=round(score, 4), snippet=self._snippet(doc, query_terms)))

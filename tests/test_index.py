@@ -76,3 +76,23 @@ def test_corpus_rejects_missing_fields(tmp_path):
     bad.write_text(json.dumps([{"id": "a", "title": "t"}]))
     with pytest.raises(ValueError, match="missing fields"):
         load_corpus(bad)
+
+
+def test_synonyms_bridge_colloquial_to_regulatory_vocabulary(index):
+    """'counterfeit' must reach 'falsified' — users do not type like regulators."""
+    hits = index.search("our supplier might be shipping counterfeit drugs", limit=3)
+    assert "eu-gdp-2013-c343" in {hit.document.id for hit in hits}
+
+
+def test_expansion_does_not_outrank_a_literal_match():
+    """A weak synonym must never displace the document that literally matches."""
+    from app.synonyms import expand
+
+    weights = expand(["counterfeit"])
+    assert weights["counterfeit"] == 1.0
+    assert weights["falsified"] < weights["counterfeit"]
+
+
+def test_regulatory_phrasing_is_unaffected_by_expansion(index):
+    """Precise citation lookups must stay precise after vocabulary bridging."""
+    assert index.search("preventing falsified medicines")[0].document.id == "eu-gdp-2013-c343"

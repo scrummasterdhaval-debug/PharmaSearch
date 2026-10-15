@@ -88,6 +88,49 @@ the whole problem:
   finding. `.github/workflows/ci.yml` runs the tests *and* boots the built image
   and curls it, so nothing reaches a registry that has not served a real request.
 
+### Where it actually pays off in PharmaSearch
+
+Search quality is a feeling until you make it a number. Once you can grade the
+output, vibe coding stops being risky and becomes the fastest way to improve
+ranking — because a bad idea is rejected in seconds instead of shipping.
+
+`evals/` is that grader: 28 hand-written relevance judgements split into two tiers.
+
+```bash
+python -m evals.run_eval --verbose   # report
+python -m evals.run_eval --check     # CI gate, non-zero exit below threshold
+```
+
+The split is the important part. Scored against queries worded the way
+regulations are written, BM25 looked perfect — and that perfection was an
+artefact of the test, not a property of the engine. Scored against the way a QA
+officer actually types, it fell apart:
+
+| tier | precision@1 |
+|---|---|
+| "preventing falsified medicines entering the supply chain" | 1.00 |
+| "our supplier might be shipping counterfeit drugs" | 0.50 |
+
+Vocabulary mismatch is *the* problem in compliance search: `counterfeit` never
+reaches `falsified`, `fridge` never reaches `temperature excursion`. Adding
+`app/synonyms.py` — weighted domain expansion, synonyms deliberately weaker than
+literal matches so citation lookups stay precise — moved the plain-language tier:
+
+| metric | before | after |
+|---|---|---|
+| precision@1 | 0.500 | 0.583 |
+| recall@3 | 0.667 | 0.875 |
+| MRR | 0.611 | 0.750 |
+
+with the regulatory tier unmoved at 1.000. That is the whole argument: the change
+itself took minutes to generate, and the eval is what made shipping it defensible.
+The thresholds in `run_eval.py` are a ratchet — raise them when relevance
+improves, never lower them to turn a red build green.
+
+What the model cannot do is write `synonyms.py` from nothing. Every entry is
+domain knowledge about how staff phrase questions. The model built the machinery;
+the vocabulary has to come from your query logs and your compliance officers.
+
 ### The honest limits
 
 Vibe coding is excellent for the 80% that is scaffolding: HTTP plumbing, config,
