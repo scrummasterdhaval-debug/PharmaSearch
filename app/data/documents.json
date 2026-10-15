@@ -1,0 +1,110 @@
+[
+  {
+    "id": "us-cfr-211-100",
+    "title": "Written procedures for production and process control",
+    "citation": "21 CFR 211.100",
+    "jurisdiction": "US",
+    "effective_date": "1978-09-29",
+    "tags": ["gmp", "production", "sop", "deviation"],
+    "text": "There shall be written procedures for production and process control designed to assure that the drug products have the identity, strength, quality, and purity they purport to possess. Such procedures must be drafted, reviewed and approved by the appropriate organizational units and reviewed and approved by the quality control unit. Any deviation from the written procedures shall be recorded and justified."
+  },
+  {
+    "id": "us-cfr-211-192",
+    "title": "Production record review and investigation of discrepancies",
+    "citation": "21 CFR 211.192",
+    "jurisdiction": "US",
+    "effective_date": "1978-09-29",
+    "tags": ["gmp", "batch record", "deviation", "investigation", "capa"],
+    "text": "All drug product production and control records shall be reviewed and approved by the quality control unit to determine compliance with established written procedures before a batch is released or distributed. Any unexplained discrepancy or failure of a batch to meet any of its specifications shall be thoroughly investigated, whether or not the batch has already been distributed. The investigation shall extend to other batches of the same drug product and other drug products that may have been associated with the specific failure, and a written record of the investigation shall be made."
+  },
+  {
+    "id": "us-cfr-part-11",
+    "title": "Electronic records and electronic signatures",
+    "citation": "21 CFR Part 11",
+    "jurisdiction": "US",
+    "effective_date": "1997-08-20",
+    "tags": ["data integrity", "audit trail", "electronic signature", "computerised system", "validation"],
+    "text": "Closed systems used to create, modify, maintain or transmit electronic records must employ procedures and controls designed to ensure the authenticity, integrity and, where appropriate, the confidentiality of those records. Required controls include validation of systems, the ability to generate accurate and complete copies of records for inspection, protection of records throughout their retention period, limiting system access to authorised individuals, and use of secure computer-generated time-stamped audit trails that independently record the date and time of operator entries and actions that create, modify or delete electronic records. Record changes shall not obscure previously recorded information."
+  },
+  {
+    "id": "eu-gmp-annex-11",
+    "title": "Computerised systems",
+    "citation": "EudraLex Volume 4, Annex 11",
+    "jurisdiction": "EU",
+    "effective_date": "2011-06-30",
+    "tags": ["data integrity", "audit trail", "computerised system", "validation", "supplier"],
+    "text": "Where a computerised system replaces a manual operation there should be no resultant decrease in product quality, process control or quality assurance. Risk management should be applied throughout the lifecycle of the computerised system. Validation documentation should cover the relevant steps of the life cycle, and an up to date inventory of all relevant systems and their GMP functionality should be available. Consideration should be given, based on a risk assessment, to building into the system the creation of a record of all GMP-relevant changes and deletions, an audit trail, which must be available, convertible to a generally intelligible form and regularly reviewed."
+  },
+  {
+    "id": "eu-gmp-chapter-4",
+    "title": "Documentation",
+    "citation": "EudraLex Volume 4, Chapter 4",
+    "jurisdiction": "EU",
+    "effective_date": "2011-06-30",
+    "tags": ["documentation", "batch record", "retention", "gmp"],
+    "text": "Good documentation constitutes an essential part of the quality assurance system and is key to operating in compliance with GMP requirements. Documents should be designed, prepared, reviewed and distributed with care, and they should be approved, signed and dated by appropriate and authorised persons. Handwritten entries should be clear, legible and indelible. Batch documentation must be retained for one year after expiry of the batch to which it relates, or at least five years after certification of the batch by the Qualified Person, whichever is longer."
+  },
+  {
+    "id": "ich-q9-r1",
+    "title": "Quality Risk Management",
+    "citation": "ICH Q9(R1)",
+    "jurisdiction": "ICH",
+    "effective_date": "2023-01-18",
+    "tags": ["risk management", "quality system", "subjectivity", "fmea"],
+    "text": "Quality risk management is a systematic process for the assessment, control, communication and review of risks to the quality of the medicinal product across the product lifecycle. Two primary principles apply: the evaluation of the risk to quality should be based on scientific knowledge and ultimately link to the protection of the patient, and the level of effort, formality and documentation of the process should be commensurate with the level of risk. The revision adds guidance on managing and minimising subjectivity in risk assessments and on formality in quality risk management."
+  },
+  {
+    "id": "ich-q10",
+    "title": "Pharmaceutical Quality System",
+    "citation": "ICH Q10",
+    "jurisdiction": "ICH",
+    "effective_date": "2008-06-04",
+    "tags": ["quality system", "capa", "change management", "management review"],
+    "text": "A pharmaceutical quality system should be implemented across the product lifecycle covering pharmaceutical development, technology transfer, commercial manufacturing and product discontinuation. The four elements of the system are a process performance and product quality monitoring system, a corrective action and preventive action system, a change management system, and management review of process performance and product quality. Knowledge management and quality risk management are the enablers that underpin all four elements."
+  },
+  {
+    "id": "who-trs-996-annex-5",
+    "title": "Guidance on good data and record management practices",
+    "citation": "WHO TRS 996, Annex 5",
+    "jurisdiction": "WHO",
+    "effective_date": "2016-05-01",
+    "tags": ["data integrity", "alcoa", "record management", "audit trail"],
+    "text": "Data should be attributable, legible, contemporaneous, original and accurate, commonly abbreviated as ALCOA, and should additionally be complete, consistent, enduring and available. Management should ensure that personnel are not subject to commercial, political, financial or other pressures or conflicts of interest that may adversely affect the quality and integrity of their work. Contract givers remain responsible for the data integrity of records generated on their behalf by contract acceptors."
+  },
+  {
+    "id": "us-cfr-820-30",
+    "title": "Design controls for medical devices",
+    "citation": "21 CFR 820.30",
+    "jurisdiction": "US",
+    "effective_date": "1996-10-07",
+    "tags": ["device", "design control", "validation", "design history file"],
+    "text": "Each manufacturer of any class III or class II device, and specified class I devices, shall establish and maintain procedures to control the design of the device in order to ensure that specified design requirements are met. Design validation shall ensure that devices conform to defined user needs and intended uses, shall include testing of production units under actual or simulated use conditions, and shall include software validation and risk analysis where appropriate. Each manufacturer shall establish and maintain a design history file for each type of device."
+  },
+  {
+    "id": "eu-gdp-2013-c343",
+    "title": "Good distribution practice of medicinal products for human use",
+    "citation": "2013/C 343/01",
+    "jurisdiction": "EU",
+    "effective_date": "2013-11-05",
+    "tags": ["distribution", "supply chain", "falsified medicines", "temperature", "qualification"],
+    "text": "Wholesale distributors must maintain a quality system setting out responsibilities, processes and risk management principles in relation to their activities. All distribution activities should be clearly defined and systematically reviewed, and distributors must qualify their suppliers and customers to prevent falsified medicinal products entering the legal supply chain. Transport conditions, including temperature, must be controlled, monitored and recorded so that the required storage conditions of medicinal products are maintained throughout the distribution chain."
+  },
+  {
+    "id": "fda-data-integrity-2018",
+    "title": "Data integrity and compliance with drug CGMP: questions and answers",
+    "citation": "FDA Guidance for Industry, December 2018",
+    "jurisdiction": "US",
+    "effective_date": "2018-12-01",
+    "tags": ["data integrity", "audit trail", "gmp", "access control", "guidance"],
+    "text": "Audit trails that capture changes to critical data should be reviewed with each record and before final approval of the record. Workflows such as changes to a chromatographic integration method or deletion of a result should be reviewed as part of the batch record review. Firms should restrict the ability to alter specifications, process parameters or manufacturing or testing methods to authorised personnel, and system administrator rights should be assigned to personnel independent of those responsible for the record content."
+  },
+  {
+    "id": "ich-e6-r3",
+    "title": "Good Clinical Practice",
+    "citation": "ICH E6(R3)",
+    "jurisdiction": "ICH",
+    "effective_date": "2025-01-06",
+    "tags": ["clinical", "gcp", "trial", "informed consent", "data governance"],
+    "text": "Clinical trials should be designed, conducted and reported so that the rights, safety and wellbeing of participants are protected and the results are reliable. The revision adopts a principles-based structure with an emphasis on proportionate, risk-based approaches and on data governance across the data lifecycle, including the growing use of decentralised elements and diverse data sources. Trial processes should be fit for purpose and the quality of the trial should be built into its design rather than inspected in afterwards."
+  }
+]

@@ -1,0 +1,40 @@
+# Portable Kubernetes equivalent: kubectl apply -f deploy/k8s.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pharmasearch
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: pharmasearch }
+  template:
+    metadata:
+      labels: { app: pharmasearch }
+    spec:
+      containers:
+        - name: api
+          image: pharmasearch:latest
+          ports: [{ containerPort: 8080 }]
+          env:
+            - name: PORT
+              value: "8080"
+            - name: PHARMASEARCH_ENV
+              value: production
+          readinessProbe:
+            httpGet: { path: /readyz, port: 8080 }
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            periodSeconds: 30
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits: { cpu: "1", memory: 512Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pharmasearch
+spec:
+  selector: { app: pharmasearch }
+  ports: [{ port: 80, targetPort: 8080 }]

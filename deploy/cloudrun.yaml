@@ -1,0 +1,38 @@
+# Google Cloud Run service definition.
+#   gcloud run services replace deploy/cloudrun.yaml --region europe-west1
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: pharmasearch
+spec:
+  template:
+    metadata:
+      annotations:
+        # The index lives in memory and is built at startup, so keep one
+        # instance warm rather than rebuilding it on every cold start.
+        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/maxScale: "10"
+    spec:
+      containerConcurrency: 80
+      containers:
+        - image: REGION-docker.pkg.dev/PROJECT_ID/pharmasearch/pharmasearch:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PHARMASEARCH_ENV
+              value: production
+            - name: LOG_LEVEL
+              value: INFO
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          startupProbe:
+            httpGet:
+              path: /readyz
+            failureThreshold: 10
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /healthz
+            periodSeconds: 30

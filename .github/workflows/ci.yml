@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+
+  container:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t pharmasearch:ci .
+      - name: Boot it and prove it serves
+        run: |
+          docker run -d --name ps -p 8080:8080 pharmasearch:ci
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:8080/readyz; then break; fi
+            sleep 1
+          done
+          curl -fsS "http://localhost:8080/search?q=audit+trail" | head -c 400
+          docker rm -f ps
